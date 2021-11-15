@@ -37,6 +37,26 @@ namespace TinyTypes
                 _                   => throw new ArgumentOutOfRangeException(nameof(self), self, null)
             };
 
+        public static void Do<TLeft, TRight>(this Either<TLeft, TRight>? self, Action<TLeft> left, Action<TRight> right, Action none)
+        {
+            if (self is Some<TLeft>(var l))
+                left(l);
+            else if (self is Some<TRight>(var r))
+                right(r);
+            else
+                none();
+        }
+
+        public static void Do<TLeft,TRight>(this Either<TLeft,TRight> self, Action<TLeft> left,Action<TRight> right)
+        {
+            if (self is Some<TLeft>(var l))
+                left(l);
+            else if (self is Some<TRight>(var r))
+                right(r);
+            else
+                throw new ArgumentOutOfRangeException(nameof(self), self, null);
+        }
+
         public static T GetOrDefault<T>(this Option<T>? self, T defaultValue) => 
             self is Some<T>(var value) ? value : defaultValue;
     }
