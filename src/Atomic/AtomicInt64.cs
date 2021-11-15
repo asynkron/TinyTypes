@@ -1,6 +1,6 @@
 using System.Threading;
 using JetBrains.Annotations;
-
+using T = System.Int64;
 namespace TinyTypes.Atomic
 {
     /// <summary>
@@ -9,22 +9,50 @@ namespace TinyTypes.Atomic
     [PublicAPI]
     public class AtomicInt64
     {
-        private long _value;
+        private T _value;
 
         public AtomicInt64()
         {
         }
 
-        public AtomicInt64(long initialValue)
+        public AtomicInt64(T initialValue)
         {
             _value = initialValue;
         }
 
-        public long Value => _value;
-
-        public long Add(long value)
+        public T Add(T value)
         {
             return Interlocked.Add(ref _value, value);
+        }
+        
+        public T Or(T value)
+        {
+            return Interlocked.Or(ref _value, value);
+        }
+        
+        public T And(T value)
+        {
+            return Interlocked.And(ref _value, value);
+        }
+        
+        public T Read(T value)
+        {
+            return Interlocked.Read(ref _value);
+        }
+        
+        public T Exchange(T value)
+        {
+            return Interlocked.Exchange(ref _value, value);
+        }
+        
+        public T Exchange(T value, T comparand)
+        {
+            return Interlocked.CompareExchange(ref _value, value, comparand);
+        }
+        
+        public T Decrement()
+        {
+            return Interlocked.Decrement(ref _value);
         }
 
         public long Increment()
@@ -35,18 +63,6 @@ namespace TinyTypes.Atomic
         public void Reset()
         {
             Interlocked.Exchange(ref _value, 0);
-        }
-        
-        public static AtomicInt64 operator ++(AtomicInt64 v) => v.Increment();
-
-        public static implicit operator AtomicInt64(long value)
-        {
-            return new(value);
-        }
-
-        public static implicit operator long(AtomicInt64 value)
-        {
-            return value.Value;
         }
     }
 }
