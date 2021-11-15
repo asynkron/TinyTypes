@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics.CodeAnalysis;
 using JetBrains.Annotations;
 
 namespace TinyTypes
@@ -6,6 +7,10 @@ namespace TinyTypes
     [PublicAPI]
     public static class Options
     {
+        public static Option<T>? Option<T>(T? value) where T:struct
+        {
+            return value is null ? null : new Some<T>(value.Value);
+        }
         public static Option<T>? Option<T>(T? value)
         {
             return value is null ? null : new Some<T>(value);
@@ -16,7 +21,7 @@ namespace TinyTypes
             return new Some<T>(value);
         }
 
-        public static Option<T>? Null<T>()
+        public static Option<T>? None<T>()
         {
             return null;
         }
@@ -24,7 +29,7 @@ namespace TinyTypes
         public static Option<TOut>? Select<TIn, TOut>(this Option<TIn>? self, Func<TIn, TOut> selector)
         {
             if (self is not Some<TIn>(var v))
-                return Null<TOut>();
+                return None<TOut>();
             var yy = selector(v);
             return Some(yy);
         }
