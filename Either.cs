@@ -1,31 +1,31 @@
 ﻿#nullable enable
 using System;
-using System.Diagnostics.CodeAnalysis;
+using JetBrains.Annotations;
 
 namespace TinyTypes
 {
+    [PublicAPI]
     public interface Either<TLeft, TRight>
     {
-        public Option<TLeft>? GetLeft() => this as Left;
-        public Option<TRight>? GetRight() => this as Right;
-
-        public static Either<TLeft, TRight> Some([NotNull] TLeft value)
+        public Option<TLeft>? GetLeft()
         {
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
+            return this as Left;
+        }
 
+        public Option<TRight>? GetRight()
+        {
+            return this as Right;
+        }
+
+        public static Either<TLeft, TRight> Some([System.Diagnostics.CodeAnalysis.NotNull] TLeft value)
+        {
+            if (value is null) throw new ArgumentNullException(nameof(value));
             return new Left(value);
         }
 
-        public static Either<TLeft, TRight> Some([NotNull] TRight value)
+        public static Either<TLeft, TRight> Some([System.Diagnostics.CodeAnalysis.NotNull] TRight value)
         {
-            if (value is null)
-            {
-                throw new ArgumentNullException(nameof(value));
-            }
-
+            if (value is null) throw new ArgumentNullException(nameof(value));
             return new Right(value);
         }
 

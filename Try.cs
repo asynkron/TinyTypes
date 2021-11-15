@@ -1,8 +1,10 @@
 using System;
 using System.Threading.Tasks;
+using JetBrains.Annotations;
 
 namespace TinyTypes
 {
+    [PublicAPI]
     public static class Try
     {
         public static Either<TOut, Exception> Execute<TOut>(Func<TOut> action)
