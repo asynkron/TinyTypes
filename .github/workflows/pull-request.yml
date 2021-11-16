@@ -1,0 +1,26 @@
+name: Build and test PRs
+
+on: [pull_request]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v1
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "6.0.x"
+          include-prerelease: true
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "5.0.x"
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: "3.1.x"
+
+      - name: Run tests ${{ matrix.test }}
+        timeout-minutes: 7
+
+        run: |
+          dotnet test -c Release

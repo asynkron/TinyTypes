@@ -8,6 +8,14 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "tests", "tests", "{7D8C4C1D
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TinyTypes.Tests", "tests\TinyTypes.Tests.csproj", "{4A443E41-109C-4A34-B930-3255B930E090}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".meta", ".meta", "{E0320E39-E725-4090-AED3-F9C8CA3BC7B6}"
+ProjectSection(SolutionItems) = preProject
+	.github\.DS_Store = .github\.DS_Store
+	.github\workflows\pull-request.yml = .github\workflows\pull-request.yml
+	.github\workflows\build-master.yml = .github\workflows\build-master.yml
+	.github\dependabot.yml = .github\dependabot.yml
+EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
