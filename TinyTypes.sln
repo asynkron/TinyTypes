@@ -16,6 +16,8 @@ ProjectSection(SolutionItems) = preProject
 	.github\dependabot.yml = .github\dependabot.yml
 EndProjectSection
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemoApp", "DemoApp\DemoApp.csproj", "{5251FA38-7BEA-400D-AC04-6B109388A801}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -30,6 +32,10 @@ Global
 		{4A443E41-109C-4A34-B930-3255B930E090}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{4A443E41-109C-4A34-B930-3255B930E090}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4A443E41-109C-4A34-B930-3255B930E090}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5251FA38-7BEA-400D-AC04-6B109388A801}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5251FA38-7BEA-400D-AC04-6B109388A801}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5251FA38-7BEA-400D-AC04-6B109388A801}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5251FA38-7BEA-400D-AC04-6B109388A801}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{233F7D94-16E9-496A-8C1B-1DFCB869A5FD} = {8D71195E-137D-46A7-8684-E89EFBD41DC8}
